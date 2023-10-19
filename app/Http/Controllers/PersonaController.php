@@ -14,7 +14,7 @@ class PersonaController extends Controller
     {
         // Página de inicio
         $datos = Persona::all();
-        return view('inicio', compact('datos'));
+        return view('home', compact('datos'));
     }
 
     /**
@@ -23,7 +23,7 @@ class PersonaController extends Controller
     public function create()
     {
         // Formulario de creación
-        return "Formulario de inserción";
+        return view('create');
     }
 
     /**
@@ -48,7 +48,7 @@ class PersonaController extends Controller
     public function edit(Persona $persona)
     {
         // Formulario de edición
-        return "Formulario para editar";
+        return view('edit');
 
     }
 
@@ -66,5 +66,11 @@ class PersonaController extends Controller
     public function destroy(Persona $persona)
     {
         // Elimina un registro
+    }
+
+    public function delete(Persona $persona)
+    {
+        // Confirmar antes de eliminar
+        return view('delete');
     }
 }

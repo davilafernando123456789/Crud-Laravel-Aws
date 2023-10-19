@@ -34,7 +34,7 @@
                                 <td>{{ $dato->materno }}</td>
                                 <td>{{ $dato->fecha_nacimiento }}</td>
                                 <td><a href="{{ route('personas.edit') }}" class="btn btn-info btn-sm"><i class="fas fa-user-edit"></i> Editar</a></td>
-                                <td><a href="{{ route('personas.edit') }}" class="btn btn-danger btn-sm"><i class="fas fa-user-minus"></i> Eliminar</a></td>
+                                <td><a href="{{ route('personas.delete') }}" class="btn btn-danger btn-sm"><i class="fas fa-user-minus"></i> Eliminar</a></td>
                             </tr>
                         @endforeach
                     </tbody>

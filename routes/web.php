@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PersonaController::class, 'index'])->name('personas.index');
 Route::get('/create', [PersonaController::class, 'create'])->name('personas.create');
 Route::get('/edit', [PersonaController::class, 'edit'])->name('personas.edit');
+Route::get('/delete', [PersonaController::class, 'delete'])->name('personas.delete');
