@@ -13,7 +13,8 @@ class PersonaController extends Controller
     public function index()
     {
         // Página de inicio
-        return view('welcome');
+        $datos = Persona::all();
+        return view('inicio', compact('datos'));
     }
 
     /**
