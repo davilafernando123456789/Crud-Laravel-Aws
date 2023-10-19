@@ -13,6 +13,7 @@ class PersonaController extends Controller
     public function index()
     {
         // Página de inicio
+        return view('welcome');
     }
 
     /**
@@ -21,6 +22,7 @@ class PersonaController extends Controller
     public function create()
     {
         // Formulario de creación
+        return "Formulario de inserción";
     }
 
     /**
@@ -45,6 +47,8 @@ class PersonaController extends Controller
     public function edit(Persona $persona)
     {
         // Formulario de edición
+        return "Formulario para editar";
+
     }
 
     /**
