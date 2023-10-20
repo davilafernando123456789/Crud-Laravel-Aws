@@ -10,7 +10,8 @@
                 Agregar persona
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="{{ route('personas.store') }}" method="post">
+                    @csrf
                     <div class="mb-3">    
                         <label class="form-label">
                         Nombre:

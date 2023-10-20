@@ -11,6 +11,14 @@
             CRUD con Laravel 10 y MySQL
         </div>
         <div class="card-body">
+
+            <!-- Mensaje - validar la sesión -->
+            @if ($mensaje = Session::get('message'))
+                <div class="alert alert-info" role="alert">
+                    {{ $mensaje }}
+                </div>
+            @endif
+
             <h5 class="card-title">Lista de personas</h5>
             <p><a href="{{ route('personas.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-user-plus"></i> Agregar persona</a></p>
             <hr>
@@ -33,8 +41,17 @@
                                 <td>{{ $dato->paterno }}</td>
                                 <td>{{ $dato->materno }}</td>
                                 <td>{{ $dato->fecha_nacimiento }}</td>
-                                <td><a href="{{ route('personas.edit') }}" class="btn btn-info btn-sm"><i class="fas fa-user-edit"></i> Editar</a></td>
-                                <td><a href="{{ route('personas.delete') }}" class="btn btn-danger btn-sm"><i class="fas fa-user-minus"></i> Eliminar</a></td>
+                                <td>
+                                    <!-- al action del formulario tipo GET, agregar un parámetro adicional, el id -->
+                                    <form action="{{ route('personas.edit', $dato->id) }}" method="get">
+                                        <button class="btn btn-info btn-sm"><i class="fas fa-user-edit"></i> Editar</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('personas.show', $dato->id) }}" method="get">
+                                        <button class="btn btn-danger btn-sm"><i class="fas fa-user-minus"></i> Eliminar</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 // Al comienzo es a nivel cliente, name es a nivel programación
 
-Route::get('/', [PersonaController::class, 'index'])->name('personas.index');
-Route::get('/create', [PersonaController::class, 'create'])->name('personas.create');
-Route::get('/edit', [PersonaController::class, 'edit'])->name('personas.edit');
-Route::get('/delete', [PersonaController::class, 'delete'])->name('personas.delete');
+Route::get('/',                 [PersonaController::class, 'index'])    ->name('personas.index');
+Route::get('/create',           [PersonaController::class, 'create'])   ->name('personas.create');
+Route::post('/store',           [PersonaController::class, 'store'])    ->name('personas.store');
+Route::get('/edit/{id}',        [PersonaController::class, 'edit'])     ->name('personas.edit');
+Route::put('/update/{id}',      [PersonaController::class, 'update'])   ->name('personas.update');
+Route::get('/show/{id}',        [PersonaController::class, 'show'])     ->name('personas.show');
+Route::delete('/destroy/{id}',  [PersonaController::class, 'destroy'])  ->name('personas.destroy');
