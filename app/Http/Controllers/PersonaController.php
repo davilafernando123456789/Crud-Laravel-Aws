@@ -13,7 +13,7 @@ class PersonaController extends Controller
     public function index()
     {
         // Página de inicio
-        $datos = Persona::all();
+        $datos = Persona::orderBy('id','asc')->paginate(3);
         return view('home', compact('datos'));
     }
 

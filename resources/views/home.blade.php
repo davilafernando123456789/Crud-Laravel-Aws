@@ -22,41 +22,44 @@
             <h5 class="card-title">Lista de personas</h5>
             <p><a href="{{ route('personas.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-user-plus"></i> Agregar persona</a></p>
             <hr>
-            <div class="table table-responsive">
-                <table class="table table-sm table-hover table-striped">
-                    <thead>
+            <table class="table table-sm table-hover table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido paterno</th>
+                        <th>Apellido materno</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($datos as $dato)
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellido paterno</th>
-                            <th>Apellido materno</th>
-                            <th>Fecha de nacimiento</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                            <td>{{ $dato->nombre }}</td>
+                            <td>{{ $dato->paterno }}</td>
+                            <td>{{ $dato->materno }}</td>
+                            <td>{{ $dato->fecha_nacimiento }}</td>
+                            <td>
+                                <!-- al action del formulario tipo GET, agregar un parámetro adicional, el id -->
+                                <form action="{{ route('personas.edit', $dato->id) }}" method="get">
+                                    <button class="btn btn-info btn-sm"><i class="fas fa-user-edit"></i> Editar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ route('personas.show', $dato->id) }}" method="get">
+                                    <button class="btn btn-danger btn-sm"><i class="fas fa-user-minus"></i> Eliminar</button>
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($datos as $dato)
-                            <tr>
-                                <td>{{ $dato->nombre }}</td>
-                                <td>{{ $dato->paterno }}</td>
-                                <td>{{ $dato->materno }}</td>
-                                <td>{{ $dato->fecha_nacimiento }}</td>
-                                <td>
-                                    <!-- al action del formulario tipo GET, agregar un parámetro adicional, el id -->
-                                    <form action="{{ route('personas.edit', $dato->id) }}" method="get">
-                                        <button class="btn btn-info btn-sm"><i class="fas fa-user-edit"></i> Editar</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="{{ route('personas.show', $dato->id) }}" method="get">
-                                        <button class="btn btn-danger btn-sm"><i class="fas fa-user-minus"></i> Eliminar</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
+            <hr>
+            <!-- paginación -->
+            <aside>
+                {{ $datos->links() }}
+            </aside>
         </div>
     </div>
 </section>
