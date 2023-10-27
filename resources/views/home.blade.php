@@ -1,6 +1,5 @@
 @extends('layout/template')
 
-
 @section('titlePage', 'Laravel | CRUD')
 
 @section('content')
@@ -8,7 +7,7 @@
 <section class="my-5">
     <div class="card">
         <div class="card-header">
-            CRUD con Laravel 10 y MySQL
+            CRUD
         </div>
         <div class="card-body">
 
@@ -29,6 +28,7 @@
                         <th>Apellido paterno</th>
                         <th>Apellido materno</th>
                         <th>Fecha de nacimiento</th>
+                        <th>Imagen</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -40,6 +40,13 @@
                             <td>{{ $dato->paterno }}</td>
                             <td>{{ $dato->materno }}</td>
                             <td>{{ $dato->fecha_nacimiento }}</td>
+                            <td>
+                                @if ($dato->imagen)
+                                    <button class="btn btn-info btn-sm" onclick="window.open('{{ $dato->imagen }}', '_blank')">Ver imagen</button>
+                                @else
+                                    No hay imagen
+                                @endif
+                            </td>
                             <td>
                                 <!-- al action del formulario tipo GET, agregar un parámetro adicional, el id -->
                                 <form action="{{ route('personas.edit', $dato->id) }}" method="get">
